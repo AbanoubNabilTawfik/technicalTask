@@ -1,0 +1,18 @@
+<div class="container mt-5">
+    <h2>Relocate Employee</h2>
+    <p>Choose a new department:</p>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <select class="form-select" (change)="checkEmployeeCurrentDepartment()"  [(ngModel)]="selectedDepartment">
+                    <option  *ngFor="let department of departments" [value]="department.value">{{
+                        department.description}}</option>
+                </select>
+            </div>
+            <small *ngIf="isSameDepartment" class="text-danger">This Employee Already Assigned to this department</small>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <button class="btn btn-primary" [disabled]="isSameDepartment" (click)="submitRelocation()">Submit</button>
+    </div>
+</div>
